@@ -1,0 +1,13 @@
+---
+interface Props {
+  name: string;
+}
+
+const { name } = Astro.props;
+---
+
+<section data-section={name} class="relative w-full py-6 mb-6">
+  <slot />
+</section>
+
+

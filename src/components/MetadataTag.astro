@@ -1,0 +1,8 @@
+---
+interface Props {
+    text: string;
+    extraClasses?:string;
+}
+const { text, extraClasses = "" } = Astro.props;
+---
+<span class={` font-normal text-sm uppercase flex flex-row gap-2 px-2 py-1 rounded-md bg-slate-600 text-white ${extraClasses}`}>{text}</span>

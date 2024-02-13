@@ -1,0 +1,38 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Section from "../../components/Section.astro";
+import RandomImage from "../../components/RandomImage.astro";
+import MetadataTag from '../../components/MetadataTag.astro';
+import { getCollection } from "astro:content";
+
+const experiments = await getCollection("experiments");
+const random = Math.floor(25 * Math.random());
+---
+
+<Layout title="LABS Experiments">
+  <Section name="experiments-grid">
+    <h1
+      class="text-5xl font-bold tracking-tight text-slate-800 dark:text-white mb-8"
+    >
+      Experiments
+    </h1>
+    <div class="grid grid-cols-3 gap-4">
+      {
+        experiments.map((e, i) => (
+          <a href={e.slug}>
+            <div class="flex flex-col gap-2">
+              <div class="rounded-md border border-slate-500 shadow-md bg-slate-200 dark:bg-gray-900 min-h-56 h-56 flex items-center justify-center">
+                <RandomImage index={random + i} />
+              </div>
+              <h2 class="text-xl text-slate-800 dark:text-white font-bold flex items-center gap-2">
+                {e.data.title}
+                <MetadataTag text={e.data.experimentType} extraClasses="" />
+              </h2>
+              <p class="text-slate-800 dark:text-white">{e.data.abstract}</p>
+            </div>
+          </a>
+        ))
+      }
+    </div>
+  </Section>
+</Layout>

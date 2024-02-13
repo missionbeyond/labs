@@ -1,0 +1,47 @@
+---
+interface Props {
+  index?: number;
+  seed?: number;
+}
+
+import { Image } from "astro:assets";
+import cooking from "../assets/undraw_cooking_p7m1.svg";
+import dog from "../assets/undraw_dog_c7i6.svg";
+import experience from "../assets/undraw_experience_design_re_dmqq.svg";
+import mobile from "../assets/undraw_mobile_content_xvgr.svg";
+import scientist from "../assets/undraw_scientist_ft0o.svg";
+import team from "../assets/undraw_team_up_re_84ok.svg";
+import building from "../assets/undraw_building_blocks_re_5ahy.svg";
+import imageview from "../assets/undraw_image_viewer_re_7ejc.svg";
+import learning from "../assets/undraw_learning_sketching_nd4f.svg";
+import teardown from "../assets/undraw_product_teardown_re_m1pc.svg";
+import engineer from "../assets/undraw_software_engineer_re_tnjc.svg";
+import collaboration from "../assets/undraw_team_collaboration_re_ow29.svg";
+import teacher from "../assets/undraw_teacher_re_sico.svg";
+import world from "../assets/undraw_world_re_768g.svg";
+
+const images = [
+  cooking,
+  dog,
+  experience,
+  mobile,
+  scientist,
+  team,
+  building,
+  learning,
+  imageview,
+  teardown,
+  engineer,
+  collaboration,
+  teacher,
+  world,
+];
+const { index, seed } = Astro.props;
+const imagesrc = images[(index ?? Math.floor((Math.random() * images.length))) % images.length];
+---
+
+<Image
+  src={imagesrc}
+  alt="A random image"
+  class="w-full h-full object-contain object-center p-4"
+/>

@@ -1,0 +1,64 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Section from "../../components/Section.astro";
+import Hero from "../../components/Hero.astro";
+import MetadataTag from "../../components/MetadataTag.astro";
+import { getCollection, getEntry } from "astro:content";
+import Prose from "../../components/Prose.astro";
+
+export async function getStaticPaths() {
+  const experimentEntries = await getCollection("experiments");
+  return experimentEntries.map((p) => ({
+    params: { experiment: p.slug },
+    props: { entry: p },
+  }));
+}
+
+const { experiment } = Astro.params;
+const entry = await getEntry("experiments", experiment);
+const { Content } = await entry.render();
+---
+
+<Layout title="">
+  <Section name="hero">
+    <div class="mb-8 -mt-16">
+      <div class="flex flex-row items-start justify-center gap-3">
+        <h1
+          class="text-5xl font-bold tracking-tight text-slate-800 dark:text-white"
+        >
+          {entry.data.title}
+        </h1>
+        <MetadataTag text={entry.data.experimentType} />
+      </div>
+      <p class="text-center text-balance mt-4">{entry.data.abstract}</p>
+    </div>
+    <Hero>
+      <div class="h-[790px] grid grid-flow-col grid-cols-2">
+        <div class="h-full rounded-l-lg bg-opacity-10 bg-black relative overflow-hidden">
+          <iframe class="absolute inset-0 w-full h-full" src="/app" />
+        </div>
+        <div class="h-full rounded-r-lg p-8 text-slate-800 dark:text-white">
+          <div class="mb-8">
+            <h2 class="text-2xl  tracking-tight mb-4">
+              Instructions
+            </h2>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. In est
+              ante in nibh mauris.
+            </p>
+          </div>
+          <div class="mb-8">
+            <h2 class="text-2xl tracking-tight mb-4">Feedback</h2>
+            <form>
+              <label>Comments</label>
+              <textarea rows="8" class="bg-white dark:bg-slate-600 w-full"></textarea>
+              <button class="py-2 px-4 rounded-md bg-slate-500">Send</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </Hero>
+    <div class="flex p-8"><Prose><Content /></Prose></div>
+  </Section>
+</Layout>
