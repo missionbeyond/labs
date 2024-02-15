@@ -1,8 +1,16 @@
 ---
-import Layout from "../layouts/Layout.astro";
+import Landing from "../layouts/Landing.astro";
 import Section from "../components/Section.astro";
+import RandomImage from "../components/RandomImage.astro";
+import { Image } from "astro:assets";
+import scientist from "../assets/undraw_scientist_ft0o.svg";
+
 ---
 
-<Layout title="Mission Beyond LABS">
-  <Section name="hero" />
-</Layout>
+<Landing title="Mission Beyond LABS">
+  <div class="flex flex-col gap-2 justify-center items-center">
+  <div class="rounded-full bg-slate-400 dark:bg-slate-800 shadow-lg p-4"><Image src={scientist} alt="illustration of a scientist doing an experiment" class="w-72 h-72 object-contain object-center" /></div>
+  <h1 class="text-2xl font-bold text-slate-800 dark:text-white tracking-tight">labs.missionbeyond.co.uk</h1>
+    <p class="">we're working on something...</p>
+</div>
+</Landing>
