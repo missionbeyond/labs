@@ -12,11 +12,11 @@ const random = Math.floor(25 * Math.random());
 <Layout title="LABS Experiments">
   <Section name="experiments-grid">
     <h1
-      class="text-5xl font-bold tracking-tight text-slate-800 dark:text-white mb-8"
+      class="mx-4 md:mx-0 text-5xl font-bold tracking-tight text-slate-800 dark:text-white mb-8"
     >
       Experiments
     </h1>
-    <div class="grid grid-cols-3 gap-4">
+    <div class="mx-4 md:mx-0 grid grid-cols-1 md:grid-cols-3 gap-4">
       {
         experiments.map((e, i) => (
           <a href={e.slug}>
