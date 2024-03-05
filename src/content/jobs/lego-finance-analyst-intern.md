@@ -17,6 +17,8 @@ highlight:
         definition: "insider deets about how a business works"
     -   term: "LEGO"
         definition: "you don't know what lego is?"
+    -   term: "quantitative"
+        definition: "something"
 ---
 
 ### Job Description
