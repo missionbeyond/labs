@@ -1,0 +1,27 @@
+---
+import AppLayout from "../../../../layouts/AppLayout.astro";
+import RandomImage from "../../../../components/RandomImage.astro";
+import { getCollection, getEntry } from "astro:content";
+
+const jobs = await getCollection("jobs");
+---
+
+<AppLayout title="Jobs">
+  <header class="p-3">
+    <h1 class="text-2xl font-bold text-black text-center">Jobs</h1>
+    <p class="text-center">Here are the jobs that are available for translation.</p>
+</header>
+  <article class="p-3">
+    <ul class="grid grid-cols-2 gap-4">
+      {
+        jobs.map((job, ji) => (
+          <li class="rounded-lg relative shadow-md bg-slate-400 flex flex-col items-center justify-center min-h-48 hover:scale-[1.01] transition-all ease-in-out">
+ 
+            <a class="text-center w-full h-full flex items-center justify-center text-slate-800 font-bold z-10 p-2" href={`/app/jobtranslator/jobs/${job.slug}`}>{job.data.title}</a>
+          </li>
+        ))
+      }
+    </ul>
+  </article>
+  <footer class="p-3"></footer>
+</AppLayout>

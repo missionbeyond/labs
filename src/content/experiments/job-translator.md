@@ -1,6 +1,7 @@
 ---
 title: "Job Translator"
 experimentType: "app"
+embedUrl: "jobtranslator/jobs"
 abstract: "We all know how hard it is to get a job, especially when the language is so ridiculous. Fear not!"
 ---
 

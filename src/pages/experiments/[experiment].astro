@@ -33,7 +33,7 @@ const { Content } = await entry.render();
     <Hero>
       <div class="min-h-[790px] grid grid-flow-row md:grid-flow-col md:grid-cols-2">
         <div class="h-screen max-h-[790px] md:h-full md:rounded-l-lg bg-opacity-10 bg-black relative overflow-hidden">
-          <iframe class="absolute inset-0 w-full h-full" src="/app" />
+          <iframe class="absolute inset-0 w-full h-full" src={`/app/${entry.data.embedUrl ?? ""}`} />
         </div>
         <div class="h-full rounded-r-lg p-8 text-slate-800 dark:text-white">
           <div class="mb-8">
