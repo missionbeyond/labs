@@ -5,6 +5,7 @@ title: "What if jargon in job ads could be decoded?"
 abstract: "Translating industry jargon into words that make sense in real life"
 embedUrl: "jobtranslator/jobs"
 imageUrl: ""
+sponsor: "microsoft"
 ---
 
 # PROBLEM

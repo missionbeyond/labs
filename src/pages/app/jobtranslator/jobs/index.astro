@@ -15,7 +15,7 @@ const jobs = await getCollection("jobs");
     <ul class="grid grid-cols-2 gap-4">
       {
         jobs.map((job, ji) => (
-          <li class="rounded-lg relative shadow-md bg-slate-400 flex flex-col items-center justify-center min-h-48 hover:scale-[1.01] transition-all ease-in-out">
+          <li class="rounded-lg relative shadow-md bg-slate-400 flex flex-col items-center justify-center min-h-40 hover:scale-[1.01] transition-all ease-in-out">
  
             <a class="text-center w-full h-full flex items-center justify-center text-slate-800 font-bold z-10 p-2" href={`/app/jobtranslator/jobs/${job.slug}`}>{job.data.title}</a>
           </li>

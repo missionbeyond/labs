@@ -2,6 +2,7 @@
 import Layout from "../../layouts/Layout.astro";
 import Section from "../../components/Section.astro";
 import Hero from "../../components/Hero.astro";
+import CompanyLogo from "../../components/CompanyLogo.astro";
 import MetadataTag from "../../components/MetadataTag.astro";
 import { getCollection, getEntry } from "astro:content";
 import Prose from "../../components/Prose.astro";
@@ -21,42 +22,77 @@ const { Content } = await entry.render();
 
 <Layout title="">
   <Section name="hero">
-    <div class="mb-8 -mt-8 lg:-mt-16">
-      <div class="flex flex-col md:flex-row items-center md:items-start justify-center gap-1 md:gap-3">
-        <h1 class="text-3xl md:text-5xl mx-4 md:mx-0 text-center font-bold tracking-tight text-slate-800 dark:text-white">
-          {entry.data.title}
-        </h1>
-        <MetadataTag text={entry.data.experimentType} />
-      </div>
-      <p class="text-center text-balance mt-4">{entry.data.abstract}</p>
-    </div>
+    <div class="mb-8 -mt-8"></div>
     <Hero>
-      <div class="min-h-[790px] grid grid-flow-row md:grid-flow-col md:grid-cols-2">
-        <div class="h-screen max-h-[790px] md:h-full md:rounded-l-lg bg-opacity-10 bg-black relative overflow-hidden">
-          <iframe class="absolute inset-0 w-full h-full" src={`/app/${entry.data.embedUrl ?? ""}`} />
+      <div
+        class="min-h-[790px] grid grid-flow-row md:grid-flow-col md:grid-cols-mobile-preview"
+      >
+        <div
+          class="h-screen max-h-[790px] md:h-full md:rounded-l-lg bg-opacity-10 bg-black relative overflow-hidden p-2 md:p-6"
+        >
+          <iframe
+            class="w-full h-full rounded-md"
+            src={`/app/${entry.data.embedUrl ?? ""}`}></iframe>
         </div>
-        <div class="h-full rounded-r-lg p-8 text-slate-800 dark:text-white">
+        <div class="h-full rounded-r-lg p-6 text-slate-800 dark:text-white">
           <div class="mb-8">
-            <h2 class="text-2xl  tracking-tight mb-4">
-              Instructions
+            <h3 class="mb-2">
+              <div
+                class="flex flex-row gap-2 justify-start text-sm tracking-widest text-white font-bold uppercase"
+              >
+                <span class="flex flex-col align-middle justify-center"
+                  >{entry.data.name}</span
+                >
+                <MetadataTag text={entry.data.experimentType} extraClasses="bg-indigo-400" />
+              </div>
+            </h3>
+
+            <h2
+              class="text-3xl md:text-6xl my-8 leading-normal tracking-tighter"
+            >
+              {entry.data.title}
             </h2>
-            <p>
+            <h3 class="text-md text-slate-300 uppercase my-4">Problem</h3>
+            <p class="text-md">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. In est
+              ante in nibh mauris.
+            </p>
+            <h3 class="text-md text-slate-300 uppercase my-4">Solution</h3>
+            <p class="text-md">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod tempor incididunt ut labore et dolore magna aliqua. In est
               ante in nibh mauris.
             </p>
           </div>
           <div class="mb-8">
-            <h2 class="text-2xl tracking-tight mb-4">Feedback</h2>
-            <form>
-              <label>Comments</label>
-              <textarea rows="8" class="bg-white dark:bg-slate-600 w-full"></textarea>
-              <button class="py-2 px-4 rounded-md bg-slate-500">Send</button>
-            </form>
+            
           </div>
         </div>
       </div>
     </Hero>
-    <div class="flex p-8"><Prose><Content /></Prose></div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div class="">
+        <div
+          class="bg-slate-400 dark:bg-white rounded-md py-2 px-4 dark:text-slate-800 w-fit flex flex-row gap-2 align-middle justify-center"
+        >
+          <div class="flex flex-col justify-center text-sm">Experiment sponsored by </div>
+          <div class="h-8"><CompanyLogo company={ entry.data?.sponsor ?? "microsoft" } /></div>
+        </div>
+      </div>
+      <div class="flex flex-col md:flex-row gap-4 align-center justify-end">
+        <div
+          class="rounded-full px-5 py-3 bg-none border-2 border-white text-white uppercase font-bold"
+        >
+          Submit an Idea
+        </div>
+        <div
+          class="rounded-full px-5 py-3 bg-white border-2 border-white text-slate-800 uppercase font-bold"
+        >
+          Show Me Another Experiment
+        </div>
+      </div>
+    </div>
+    <div class="flex p-8 mt-12 align-middle justify-center"><Prose><Content /></Prose></div>
   </Section>
 </Layout>

@@ -3,6 +3,7 @@ experimentType: "map"
 name: "ESMA Mentor Map"
 title: "What if I could easily find relevant support?"
 abstract: "Putting you and the people who can help you on the map!"
+sponsor: "cocacola"
 ---
 
 # PROBLEM

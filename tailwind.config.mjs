@@ -11,6 +11,9 @@ export default {
       gridTemplateRows: {
         "page-header-footer": "auto 1fr auto",
       },
+      gridTemplateColumns: {
+        "mobile-preview": "425px 1fr"
+      }
     },
   },
   plugins: [

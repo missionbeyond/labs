@@ -3,6 +3,7 @@ experimentType: "app"
 name: "My Career Journey"
 title: "What if I could see how to get my dream job in my industry?"
 abstract: "Showing you the pathway to your dream job"
+sponsor: "facebook"
 ---
 
 # PROBLEM

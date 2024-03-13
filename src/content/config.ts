@@ -19,6 +19,7 @@ const experimentCollection = defineCollection({
     abstract: z.string(),
     embedUrl: z.string().optional(),
     imageUrl: z.string().optional(),
+    sponsor: z.string().optional()
   }),
 });
 
