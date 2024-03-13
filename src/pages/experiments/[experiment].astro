@@ -86,11 +86,12 @@ const { Content } = await entry.render();
         >
           Submit an Idea
         </div>
-        <div
-          class="rounded-full px-5 py-3 bg-white border-2 border-white text-slate-800 uppercase font-bold"
+        <a
+          class="rounded-full px-5 py-3 bg-white hover:bg-slate-200 border-2 border-white text-slate-800 uppercase font-bold"
+          href="/experiments"
         >
           Show Me Another Experiment
-        </div>
+      </a>
       </div>
     </div>
     <div class="flex p-8 mt-12 align-middle justify-center"><Prose><Content /></Prose></div>
