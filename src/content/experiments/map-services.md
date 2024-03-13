@@ -1,7 +1,8 @@
 ---
-title: "Walking Distance Jobs"
 experimentType: "map"
-abstract: "Looking for jobs you can get to without a car?"
+name: "Work Experience Map"
+title: "What if I could access work experience on my doorstep?"
+abstract: "Showing you where to get the experience you need"
 ---
 
 # PROBLEM

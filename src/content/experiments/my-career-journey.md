@@ -1,7 +1,8 @@
 ---
-title: "Mentors Data"
-experimentType: "viz"
-abstract: "We've created a data viz to help you find the support you need to get a job"
+experimentType: "app"
+name: "My Career Journey"
+title: "What if I could see how to get my dream job in my industry?"
+abstract: "Showing you the pathway to your dream job"
 ---
 
 # PROBLEM

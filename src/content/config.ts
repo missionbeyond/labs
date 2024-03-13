@@ -13,10 +13,12 @@ const pageCollection = defineCollection({
 const experimentCollection = defineCollection({
   type: "content",
   schema: z.object({
+    name: z.string(),
     title: z.string(),
     experimentType: z.string(),
     abstract: z.string(),
     embedUrl: z.string().optional(),
+    imageUrl: z.string().optional(),
   }),
 });
 

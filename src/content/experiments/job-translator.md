@@ -1,15 +1,17 @@
 ---
-title: "Job Translator"
-experimentType: "app"
+experimentType: "AI Widget"
+name: "Job Translator"
+title: "What if jargon in job ads could be decoded?"
+abstract: "Translating industry jargon into words that make sense in real life"
 embedUrl: "jobtranslator/jobs"
-abstract: "We all know how hard it is to get a job, especially when the language is so ridiculous. Fear not!"
+imageUrl: ""
 ---
 
 # PROBLEM
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. In est ante in nibh mauris. Placerat vestibulum lectus mauris ultrices eros in. Pellentesque elit ullamcorper dignissim cras tincidunt. Massa sed elementum tempus egestas sed. Eu facilisis sed odio morbi. Amet justo donec enim diam. Mi sit amet mauris commodo quis imperdiet massa tincidunt nunc. Cursus vitae congue mauris rhoncus aenean vel elit scelerisque mauris. 
 
-# SOLUTION
+# SOLUTIONds
 
 Viverra tellus in hac habitasse platea dictumst. Sed blandit libero volutpat sed cras ornare. Duis ut diam quam nulla porttitor massa. Purus ut faucibus pulvinar elementum integer enim neque. Sit amet dictum sit amet justo donec enim diam vulputate. Tortor pretium viverra suspendisse potenti. Sem integer vitae justo eget magna. Sit amet dictum sit amet. Porttitor massa id neque aliquam vestibulum. Cursus metus aliquam eleifend mi in nulla posuere. Lorem ipsum dolor sit amet consectetur adipiscing elit.
 

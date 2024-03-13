@@ -2,7 +2,7 @@
 import Layout from "../../layouts/Layout.astro";
 import Section from "../../components/Section.astro";
 import RandomImage from "../../components/RandomImage.astro";
-import MetadataTag from '../../components/MetadataTag.astro';
+import MetadataTag from "../../components/MetadataTag.astro";
 import { getCollection } from "astro:content";
 
 const experiments = await getCollection("experiments");
@@ -16,23 +16,65 @@ const random = Math.floor(25 * Math.random());
     >
       Experiments
     </h1>
-    <div class="mx-4 md:mx-0 grid grid-cols-1 md:grid-cols-3 gap-4">
+
+    <div class="mx-4 md:mx-0 grid grid-cols-1 md:grid-cols-4 gap-4">
       {
-        experiments.map((e, i) => (
-          <a href={`/experiments/${e.slug}`}>
-            <div class="flex flex-col gap-2">
-              <div class="rounded-md border border-slate-500 shadow-md bg-slate-200 dark:bg-gray-900 min-h-56 h-56 flex items-center justify-center">
-                <RandomImage index={random + i} />
+        experiments.slice(0, 5).map((e, i) => {
+          return i == 0 ? (
+            <a
+              class={`md:col-span-2 md:row-span-2`}
+              href={`/experiments/${e.slug}`}
+            >
+              <div
+                class={`grid grid-rows-page-header-footer gap-2 w-full min-h-[36rem] md:h-full rounded-lg p-4 md:p-6 bg-slate-400 dark:bg-slate-200 md:aspect-square`}
+              >
+                <div>
+                  <h3 class=" text-sm tracking-widest mb-2 text-slate-700 w-fit uppercase">
+                    {e.data.experimentType}
+                  </h3>
+                  <h2 class="text-3xl md:text-6xl dark:text-slate-800 text-white flex items-center gap-2">
+                    {e.data.title}
+                  </h2>
+                </div>
+                <div class="" />
+                <p class="text-slate-800 dark:text-slate-700 md:text-2xl">
+                  {e.data.abstract}
+                </p>
               </div>
-              <h2 class="text-xl text-slate-800 dark:text-white font-bold flex items-center gap-2">
-                {e.data.title}
-                <MetadataTag text={e.data.experimentType} extraClasses="" />
-              </h2>
-              <p class="text-slate-800 dark:text-white">{e.data.abstract}</p>
-            </div>
-          </a>
-        ))
+            </a>
+          ) : (
+            <a class="" href={`/experiments/${e.slug}`}>
+              <div
+                class={`grid grid-rows-page-header-footer gap-2 w-full min-h-56 md:h-full rounded-lg p-4 bg-slate-300 dark:bg-gray-800 md:aspect-square`}
+              >
+                <div>
+                  <h3 class=" text-sm tracking-widest mb-2 text-slate-600 dark:text-slate-200 w-fit uppercase">
+                    {e.data.experimentType}
+                  </h3>
+                  <h2 class="text-xl md:text-2xl text-slate-800 dark:text-white flex items-center gap-2">
+                    {e.data.title}
+                  </h2>
+                </div>
+                <div class="" />
+                <p class="text-slate-800 dark:text-white">{e.data.abstract}</p>
+              </div>
+            </a>
+          );
+        })
       }
+      <a href="#problem" class="bg-slate-500 dark:bg-slate-600 rounded-lg p-4 text-xl lowercase text-white dark:text-slate-200"
+        >The Problem</a
+      >
+      <a href="#problem" class="bg-slate-500 dark:bg-slate-600 rounded-lg p-4 text-xl lowercase text-white dark:text-slate-200"
+        >Our Community</a
+      >
+      <div class="dark:bg-white bg-gray-400 px-4 py-2 rounded-full text-xl md:col-span-2">
+        <input
+          class="border-0 focus:border-0 w-full dark:bg-white bg-gray-400 dark:text-slate-800 text-white"
+          type="text"
+          placeholder="Submit An Idea"
+        />
+      </div>
     </div>
   </Section>
 </Layout>

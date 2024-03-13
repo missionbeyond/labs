@@ -1,6 +1,7 @@
 ---
-title: "Youth Unemployment"
 experimentType: "viz"
+name: "Youth Unemployment Viz"
+title: "What if I knew all the facts"
 abstract: "Find out the stats now, and why you shouldn't worry!"
 ---
 
