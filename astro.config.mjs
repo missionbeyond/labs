@@ -1,8 +1,8 @@
 import { defineConfig } from "astro/config";
-import react from "@astrojs/react";
-import tailwind from "@astrojs/tailwind";
-
 import icon from "astro-icon";
+import react from "@astrojs/react";
+import sanity from "@sanity/astro";
+import tailwind from "@astrojs/tailwind";
 
 // https://astro.build/config
 export default defineConfig({
@@ -13,5 +13,12 @@ export default defineConfig({
     }),
     tailwind(),
     icon(),
+    sanity({
+      projectId: "9co1et8a",
+      dataset: "production",
+      useCdn: false,
+      apiVersion: "2024-03-01",
+      studioBasePath: "/admin",
+    }),
   ],
 });

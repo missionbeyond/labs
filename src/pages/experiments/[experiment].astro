@@ -5,19 +5,29 @@ import Hero from "../../components/Hero.astro";
 import CompanyLogo from "../../components/CompanyLogo.astro";
 import MetadataTag from "../../components/MetadataTag.astro";
 import { getCollection, getEntry } from "astro:content";
+import { sanityClient } from "sanity:client";
 import Prose from "../../components/Prose.astro";
 
 export async function getStaticPaths() {
-  const experimentEntries = await getCollection("experiments");
+  const experimentEntries = await sanityClient.fetch(`*[_type == "experiment"]`);
   return experimentEntries.map((p) => ({
-    params: { experiment: p.slug },
+    params: { experiment: p.slug.current },
     props: { entry: p },
   }));
 }
 
+
+
+
 const { experiment } = Astro.params;
-const entry = await getEntry("experiments", experiment);
-const { Content } = await entry.render();
+const entry = await sanityClient.fetch(`*[_type == "experiment" && slug.current == $experiment][0] {
+  name,
+  title,
+  experimentType -> { name, title },
+  embedUrl
+
+}`, { experiment });
+
 ---
 
 <Layout title="">
@@ -32,7 +42,7 @@ const { Content } = await entry.render();
         >
           <iframe
             class="w-full h-full rounded-md"
-            src={`/app/${entry.data.embedUrl ?? ""}`}></iframe>
+            src={`${entry.embedUrl ?? ""}`}></iframe>
         </div>
         <div class="h-full rounded-r-lg p-6 text-slate-800 dark:text-white">
           <div class="mb-8">
@@ -41,16 +51,16 @@ const { Content } = await entry.render();
                 class="flex flex-row gap-2 justify-start text-sm tracking-widest text-white font-bold uppercase"
               >
                 <span class="flex flex-col align-middle justify-center"
-                  >{entry.data.name}</span
+                  >{entry.name}</span
                 >
-                <MetadataTag text={entry.data.experimentType} extraClasses="bg-indigo-400" />
+                <MetadataTag text={entry.experimentType.title} extraClasses="bg-indigo-400" />
               </div>
             </h3>
 
             <h2
               class="text-3xl md:text-6xl my-8 leading-normal tracking-tighter"
             >
-              {entry.data.title}
+              {entry.title}
             </h2>
             <h3 class="text-md text-slate-300 uppercase my-4">Problem</h3>
             <p class="text-md">
@@ -77,7 +87,7 @@ const { Content } = await entry.render();
           class="bg-slate-400 dark:bg-white rounded-md py-2 px-4 dark:text-slate-800 w-fit flex flex-row gap-2 align-middle justify-center"
         >
           <div class="flex flex-col justify-center text-sm">Experiment sponsored by </div>
-          <div class="h-8"><CompanyLogo company={ entry.data?.sponsor ?? "microsoft" } /></div>
+          <div class="h-8"><CompanyLogo company={ "microsoft" } /></div>
         </div>
       </div>
       <div class="flex flex-col md:flex-row gap-4 align-center justify-end">
@@ -94,6 +104,6 @@ const { Content } = await entry.render();
       </a>
       </div>
     </div>
-    <div class="flex p-8 mt-12 align-middle justify-center"><Prose><Content /></Prose></div>
+    <div class="flex p-8 mt-12 align-middle justify-center"><Prose></Prose></div>
   </Section>
 </Layout>
