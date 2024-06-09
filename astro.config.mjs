@@ -4,6 +4,9 @@ import react from "@astrojs/react";
 import sanity from "@sanity/astro";
 import tailwind from "@astrojs/tailwind";
 
+const site = process.env.DEPLOYMENT_SITE;
+const base = process.env.DEPLOYMENT_BASE;
+
 // https://astro.build/config
 export default defineConfig({
   site: "https://labs.missionbeyond.co.uk",

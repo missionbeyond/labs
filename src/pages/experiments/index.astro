@@ -17,13 +17,16 @@ const experiments = await sanityClient.fetch(`*[_type == "experiment"] | order(p
   }
 }`);
 
+const headlines = experiments.slice(0, 5);
+const additionalExperiments = experiments.slice(5);
+
 ---
 
 <Layout title="LABS Experiments">
   <Section name="experiments-grid">
     <div class="mx-4 md:mx-0 grid grid-cols-1 md:grid-cols-4 gap-4">
       {
-        experiments.slice(0, 5).map((e, i) => {
+        headlines.map((e, i) => {
           return i == 0 ? (
             <a
               class={`md:col-span-2 md:row-span-2`}
@@ -66,11 +69,13 @@ const experiments = await sanityClient.fetch(`*[_type == "experiment"] | order(p
           );
         })
       }
+    </div>
+    <div class="mt-4 mx-4 md:mx-0 grid grid-cols-1 md:grid-cols-4 gap-4">
       <a href="/page/problem" class="bg-slate-500 dark:bg-slate-600 rounded-lg p-4 text-xl lowercase text-white dark:text-slate-200"
-        >The Problem</a
+        >What is The Problem?</a
       >
       <a href="/page/community" class="bg-slate-500 dark:bg-slate-600 rounded-lg p-4 text-xl lowercase text-white dark:text-slate-200"
-        >Our Community</a
+        >More About Our Community</a
       >
       <div class="dark:bg-white bg-gray-400 px-4 py-2 rounded-full text-xl md:col-span-2">
         <input
@@ -79,6 +84,28 @@ const experiments = await sanityClient.fetch(`*[_type == "experiment"] | order(p
           placeholder="Submit An Idea"
         />
       </div>
+    </div>
+    <div class="mt-4 mx-4 md:mx-0 grid grid-cols-1 md:grid-cols-4 gap-4">
+      {
+        additionalExperiments.map((e, i) => (
+            <a class="" href={`/experiments/${e.slug}`}>
+              <div
+                class={`grid grid-rows-page-header-footer gap-2 w-full min-h-56 md:h-full rounded-lg p-4 bg-slate-300 dark:bg-gray-800 md:aspect-square`}
+              >
+                <div>
+                  <h3 class=" text-sm tracking-widest mb-2 text-slate-600 dark:text-slate-200 w-fit uppercase">
+                    {e.data.experimentType?.title}
+                  </h3>
+                  <h2 class="text-xl md:text-2xl text-slate-800 dark:text-white flex items-center gap-2">
+                    {e.data.title}
+                  </h2>
+                </div>
+                <div class="" />
+                <p class="text-slate-800 dark:text-white"><PortableText portableText={e.data.abstract} /></p>
+              </div>
+            </a>
+          ))
+      }
     </div>
   </Section>
 </Layout>
